@@ -18,5 +18,28 @@ public class LoginTest extends WithApplication {
         start(fakeApplication(inMemoryDatabase(), fakeGlobal()));
         Ebean.save((List) Yaml.load("test-data.yml"));
     }
-
+    @Test
+    public void authenticateSuccess() {
+        Result result = callAction(
+            controllers.routes.ref.Application.authenticate(),
+            fakeRequest().withFormUrlEncodedBody(ImmutableMap.of(
+                "email", "bob@example.com",
+                "password", "secret"))
+        );
+        assertEquals(302, status(result));
+        assertEquals("bob@example.com", session(result).get("email"));
+    }
+    
+    @Test
+    public void authenticateFailure() {
+        Result result = callAction(
+            controllers.routes.ref.Application.authenticate(),
+            fakeRequest().withFormUrlEncodedBody(ImmutableMap.of(
+                "email", "bob@example.com",
+                "password", "badpassword"))
+        );
+        assertEquals(400, status(result));
+        assertNull(session(result).get("email"));
+    }
+    
 }

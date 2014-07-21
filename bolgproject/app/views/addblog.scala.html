@@ -1,0 +1,17 @@
+@(form:Form[Application.Addblog],user:User)
+
+@main(user){
+		
+		@helper.form(routes.Blogs.add()){
+		<p>
+       		<input type="text" name="header" placeholder="Header" value='@form("header").value'>
+   		</p>
+   		<p>
+       		<textarea rows="5" cols="15" name="text"  value='@form("text").value'>Add Text Here
+       		</textarea>
+   		</p>
+   		<p>
+      	 	<button type="submit">Add</button>
+   		</p>
+	}
+}

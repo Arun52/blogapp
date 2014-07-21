@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+import play.Logger;
 import play.db.ebean.Model;
 
 @Entity
@@ -15,12 +17,13 @@ public class User extends Model {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id
 	public static Long id;
 
 	public String name;
 	public String password;
+	@Id
 	public String email;
+	
 
 	public User(String name, String password, String email) {
 		this.name = name;
@@ -41,13 +44,13 @@ public class User extends Model {
 				.eq("email", email).findUnique();
 	}
 	
-	public static User authanticate(String email,String password){
+	public static User authenticate(String email,String password){
+		
 		return find.where()
 				.eq("email", email)
 				.eq("password", password)
 				.findUnique();
 	}
 	
-	
-
+		
 }

@@ -19,15 +19,32 @@ public class Comment extends Model{
 	public String text;
 	
 	@ManyToOne
+	public User user;
+	
+	@ManyToOne
 	public Blog blog;
+	
 	
 	public static Model.Finder<Long, Comment> find=new Model.Finder<Long, Comment>(
 			Long.class,Comment.class);
-	
+		
 	public static List<Comment> getAllComments(){
 		List<Comment> comments=Comment.find.all();
 		return comments;
 	}
 	
+	public static List<Comment> findCommentsByBlog(Long blog){
+		return Comment.find.where()
+				.eq("blog.id",blog)
+				.findList();
+	}
+	
+	public static Comment create(Comment comment,Long blog,String user,String text){
+		comment.blog=Blog.find.ref(blog);
+		comment.user=User.findbyEmail(user);
+		comment.text=text;
+		return comment;
+		
+	}
 	
 }

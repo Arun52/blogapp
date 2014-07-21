@@ -1,7 +1,6 @@
 @(form:Form[Application.Login])
 <html>
     <head>
-        <title>Blogapp</title>
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
     </head>
@@ -10,16 +9,16 @@
    		<h1>Sign in</h1>
 		@if(form.hasGlobalErrors) {
    			<p class="error">
-        @form.globalError.message
-   			 </p>
+        		@form.globalError.message
+   			</p>
 		}	
 		@if(flash.contains("success")) {
     		<p class="success">
-        @flash.get("success")
+       		@flash.get("success")
     		</p>
 		}
    		<p>
-       		<input type="email" name="email" placeholder="Email" value="@form("email").value">
+       		<input type="email" name="email" placeholder="Email" value='@form("email").value'>
    		</p>
    		<p>
        		<input type="password" name="password" placeholder="Password">
