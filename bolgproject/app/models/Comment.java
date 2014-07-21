@@ -39,10 +39,12 @@ public class Comment extends Model{
 				.findList();
 	}
 	
-	public static Comment create(Comment comment,Long blog,String user,String text){
+	public static Comment create(Long blog,String user,String text){
+		Comment comment=new Comment();
 		comment.blog=Blog.find.ref(blog);
 		comment.user=User.findbyEmail(user);
 		comment.text=text;
+		comment.save();
 		return comment;
 		
 	}

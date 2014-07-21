@@ -10,7 +10,7 @@ GET		/login						controllers.Application.login()
 POST	/login						controllers.Application.authenticate()
 GET		/logout 					controllers.Application.logout()
 
-#  Blog
+# Blog
 GET		/Blogs						controllers.Blogs.addblog()
 POST	/Blogs						controllers.Blogs.add()
 

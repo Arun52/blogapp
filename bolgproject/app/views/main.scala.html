@@ -10,7 +10,7 @@
         <header>
             <a  id="logo"><span>Home</span></a>
                 <dl id="user">
-                <dt>@user.name <span>(@user.email)</span></dt>
+                <dt> <span></span></dt>
                 <dd>
                     <a href="@routes.Application.logout()">Logout</a>
                 </dd>
@@ -19,7 +19,7 @@
         </header>
         <nav>
             
-            <button id="newGroup"><a href="@routes.Blogs.add()"New Blog</button>
+           <a href="@routes.Blogs.addblog()">New Blog</a>
         </nav>
         <section id="main">
             @body

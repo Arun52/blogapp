@@ -3,10 +3,8 @@
 @main(user){
 
 	<header>
-        <hgroup>
             <h1>Dashboard</h1>
             <h2>Blogs</h2>
-        </hgroup>
     </header>
     
     <div class="row">
@@ -21,10 +19,18 @@
 		}
 		@helper.form(routes.Comments.add(blog.id)) {
 			<p><input type="text" name="text" placeholder="Add a Comment" value='@form("text").value'></p>
-			<p><input type = "submit" value = "Add comment"></p>
+			<p><button type="submit">Add a Comment</button></p>
 		} 
-		<small>By a random Person</small>	
+		
 	</div>
 	}
 </div>
 }
+
+
+
+
+
+
+
+

@@ -19,7 +19,7 @@ public class Application extends Controller {
 	public static Result index() {
 		List<Blog> blogs = Blog.getAllBlogs();
 		List<Comment> comments=Comment.getAllComments();
-		return ok(dashboard.render(blogs ,comments,request().username(), form(Comment.class)));
+		return ok(dashboard.render(blogs ,comments,User.findbyEmail(request().username()), form(Comment.class)));
 	}
 
 	public static class Login {
@@ -49,6 +49,7 @@ public class Application extends Controller {
 	public static Result authenticate() {
 
 		Form<Login> loginForm = form(Login.class).bindFromRequest();
+		Logger.info(loginForm.get().email);
 		if (loginForm.hasErrors()) {
 			return badRequest(login.render(loginForm));
 		} else {
@@ -67,12 +68,12 @@ public class Application extends Controller {
 		return redirect(routes.Application.login());
 	}
 
-	public static class Addblog {
-		
-		public String header;
-		public String text;
-		
-	}
+//	public static class Addblog {
+//		
+//		public String header;
+//		public String text;
+//		
+//	}
 	
 //	public static Result addblog(){
 //		return ok(addblog.render(form(Addblog.class)));
