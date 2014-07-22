@@ -52,5 +52,7 @@ public class User extends Model {
 				.findUnique();
 	}
 	
-		
+	public String toString(){
+		return "User("+email+")";
+	}
 }

@@ -1,4 +1,4 @@
-@(blogs:List[Blog],comments:List[Comment],user:User,form:Form[models.Comment])
+@(blogs:List[Blog],comments:List[Comment],user:User)
 
 @main(user){
 
@@ -10,18 +10,7 @@
     <div class="row">
 	@for(blog <- blogs) {
 	<div class="span12">
-		<h2>@blog.header</h2>
-		<p>@blog.text</p>
-		@for(comment <- blog.comments) {
-		<blockquote>
-			<p>@comment.text</p>
-			</blockquote>
-		}
-		@helper.form(routes.Comments.add(blog.id)) {
-			<p><input type="text" name="text" placeholder="Add a Comment" value='@form("text").value'></p>
-			<p><button type="submit">Add a Comment</button></p>
-		} 
-		
+		<a href="@routes.Blogs.bloginfo(blog.id)"<h2>@blog.header</h2></a>
 	</div>
 	}
 </div>

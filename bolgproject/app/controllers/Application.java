@@ -2,7 +2,6 @@ package controllers;
 
 import static play.data.Form.form;
 
-import java.util.Date;
 import java.util.List;
 
 import models.Blog;
@@ -12,14 +11,16 @@ import play.Logger;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.*;
+import views.html.dashboard;
+import views.html.login;
 
 public class Application extends Controller {
 
 	public static Result index() {
+		Logger.info(User.findbyEmail(request().username()).toString());
 		List<Blog> blogs = Blog.getAllBlogs();
 		List<Comment> comments=Comment.getAllComments();
-		return ok(dashboard.render(blogs ,comments,User.findbyEmail(request().username()), form(Comment.class)));
+		return ok(dashboard.render(blogs ,comments,User.findbyEmail(request().username())));
 	}
 
 	public static class Login {

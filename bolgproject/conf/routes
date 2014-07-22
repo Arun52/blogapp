@@ -11,12 +11,12 @@ POST	/login						controllers.Application.authenticate()
 GET		/logout 					controllers.Application.logout()
 
 # Blog
-GET		/Blogs						controllers.Blogs.addblog()
-POST	/Blogs						controllers.Blogs.add()
-
+GET		/blogs						controllers.Blogs.addblog()
+POST	/blogs						controllers.Blogs.add()
+GET 	/blogs/:blog				controllers.Blogs.bloginfo(blog:Long)
 
 #Add Comment
-POST 	/Comments:blog				controllers.Comments.add(blog:Long)
+POST 	/blogs:blog/Comments:blog	controllers.Comments.add(blog:Long)
 
 
 
